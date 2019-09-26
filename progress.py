@@ -4,15 +4,9 @@ import os
 import time
 import progressbar
 from time import sleep
-
-import os
 import shutil
 import threading
 import time
-
-import os
-import shutil
-
 
 def progress_percentage(perc, width=None):
     FULL_BLOCK = '█'
