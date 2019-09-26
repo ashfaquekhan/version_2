@@ -69,6 +69,7 @@ def main_menu():
     l=0
     r_b=">"
     l_b="<"
+    l_l="_"
     while True:
         opt = ["TRANSFER","SAVE","FORMAT","VIEW"]
         up = GPIO.input(27)
@@ -82,26 +83,29 @@ def main_menu():
         if down == False:
             d='d'
             l=menu_pos(l,d,len_opt_t)
-            tex_o = "< "+str(opt[l])+" >"
+            tex_o = str(opt[l])
             led.clear_display()
-            led.draw_text2(32, 0, m_ttl, 1)
-            led.draw_text2(32, 30, tex_o, 1)
-            led.draw_text2(4, 30, l_b, 2)
-            led.draw_text2(60, 30, r_b, 2)
+            led.draw_text2(40, 0, m_ttl, 1)
+            led.draw_text2(44, 30, tex_o, 1)
+            led.draw_text2(4, 26, l_b, 2)
+            led.draw_text2(118, 26, r_b, 2)
+            led.draw_text2(41+l, 36, l_l, 2)
             led.display()
             time.sleep(0.2)
 
         elif  up == False:
             u='u'
             l=menu_pos(l,u,len_opt_t)
-            tex_p = "< "+str(opt[l])+" >"
+            tex_p = str(opt[l])
             led.clear_display()
-            led.draw_text2(32, 0, m_ttl, 1)
-            led.draw_text2(32, 30, tex_p, 1)
-            led.draw_text2(4, 30, l_b, 2)
-            led.draw_text2(60, 30, r_b, 2)
+            led.draw_text2(40, 0, m_ttl, 1)
+            led.draw_text2(44, 30, tex_p, 1)
+            led.draw_text2(4, 26, l_b, 2)
+            led.draw_text2(118, 26, r_b, 2)
+            led.draw_text2(41+l, 36, l_l, 2)
             led.display()
             time.sleep(0.2)
+
 
 
         elif enter == False:
