@@ -35,7 +35,7 @@ gpio = gaugette.gpio.GPIO()
 spi = gaugette.spi.SPI(spi_bus, spi_device)
 
 # Very important... This lets py-gaugette 'know' what pins to use in order to reset the display
-led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=32,
+led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=64,
                                cols=128)  # Change rows & cols values depending on your display dimensions.
 led.begin()
 led.clear_display()
@@ -60,13 +60,15 @@ def menu_pos(pos,opr,lim):
 
 
 h_titl = "PRESS ARROW KEY"
-led.draw_text2(0, 15, h_titl, 1)
+led.draw_text2(20, 32, h_titl, 1)
 led.display()
 time.sleep(0.2)
 
 def main_menu():
     m_ttl= "MAIN MENU"
     l=0
+    r_b=">"
+    l_b="<"
     while True:
         opt = ["TRANSFER","SAVE","FORMAT","VIEW"]
         up = GPIO.input(27)
@@ -80,22 +82,27 @@ def main_menu():
         if down == False:
             d='d'
             l=menu_pos(l,d,len_opt_t)
-            tex_o = "->"+str(opt[l])
+            tex_o = "< "+str(opt[l])+" >"
             led.clear_display()
-            led.draw_text2(0, 0, m_ttl, 1)
-            led.draw_text2(20, 15, tex_o, 1)
+            led.draw_text2(32, 0, m_ttl, 1)
+            led.draw_text2(32, 30, tex_o, 1)
+            led.draw_text2(4, 30, l_b, 2)
+            led.draw_text2(60, 30, r_b, 2)
             led.display()
             time.sleep(0.2)
 
         elif  up == False:
             u='u'
             l=menu_pos(l,u,len_opt_t)
-            tex_p = "->"+str(opt[l])
+            tex_p = "< "+str(opt[l])+" >"
             led.clear_display()
-            led.draw_text2(0, 0, m_ttl, 1)
-            led.draw_text2(20, 15, tex_p, 1)
+            led.draw_text2(32, 0, m_ttl, 1)
+            led.draw_text2(32, 30, tex_p, 1)
+            led.draw_text2(4, 30, l_b, 2)
+            led.draw_text2(60, 30, r_b, 2)
             led.display()
             time.sleep(0.2)
+
 
         elif enter == False:
             if l == 0:
