@@ -117,6 +117,9 @@ while True:
 
     elif back == False:
         path = step_back(path_src)
-        name= "showlist"
-        os.system("python pathfinder.py " + str(name) +" "+ str(path))
+        if path == "/media/pi":
+            os,system("python view_menu.py")
+        else:
+            name= "showlist"
+            os.system("python pathfinder.py " + str(name) +" "+ str(path))
 
