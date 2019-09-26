@@ -52,7 +52,7 @@ led.draw_text2(12, 15, note, 1)
 led.display()
 
 def step_back(b_path):
-    check=p_back
+    check=b_path
     siz= len(check)
     x=siz-1
     for location in range(x,0,-1):
