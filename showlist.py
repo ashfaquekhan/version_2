@@ -79,7 +79,7 @@ def menu_pos(pos,opr,lim):
     return x
 
 path_src = str(sys.argv[1])
-files = os.listdir(path)
+files = os.listdir(path_src)
 siz1 = len(files)
 siz2 = siz1 -1
 nu = 0
