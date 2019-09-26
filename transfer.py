@@ -181,8 +181,8 @@ while True:
         os.system('python main_menu.py')
 
 led.clear_display()
-rinpt = des
-sinpt = src
+rinpt = src
+sinpt = des
 
 spath_name = "/media/pi/" + str((files[int(sinpt)]))
 spath = (spath_name)
