@@ -69,7 +69,7 @@ def main_menu():
     l=0
     r_b=">"
     l_b="<"
-    l_l="_"
+    l_l="_._"
     while True:
         opt = ["TRANSFER","SAVE","FORMAT","VIEW"]
         up = GPIO.input(27)
@@ -89,7 +89,7 @@ def main_menu():
             led.draw_text2(44, 30, tex_o, 1)
             led.draw_text2(4, 26, l_b, 2)
             led.draw_text2(118, 26, r_b, 2)
-            led.draw_text2(41+l, 36, l_l, 2)
+            led.draw_text2(41+l, 42, l_l, 2)
             led.display()
             time.sleep(0.2)
 
@@ -102,7 +102,7 @@ def main_menu():
             led.draw_text2(44, 30, tex_p, 1)
             led.draw_text2(4, 26, l_b, 2)
             led.draw_text2(118, 26, r_b, 2)
-            led.draw_text2(41+l, 36, l_l, 2)
+            led.draw_text2(41+l, 42, l_l, 2)
             led.display()
             time.sleep(0.2)
 
