@@ -25,8 +25,8 @@ back =  GPIO.input(27)
 if __name__== '__main__':
     name = str(sys.argv[1])+".py"
     path_src = str(sys.argv[2])
-    os.system("python "+ str(name) +" "+ str(path_src))
+    os.system("python3 "+ str(name) +" "+ str(path_src))
 
 elif back == False:
-    os.system('python main_menu.py')
+    os.system('python3 main_menu.py')
 
