@@ -34,7 +34,7 @@ gpio = gaugette.gpio.GPIO()
 spi = gaugette.spi.SPI(spi_bus, spi_device)
 
 # Very important... This lets py-gaugette 'know' what pins to use in order to reset the display
-led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=32,
+led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=64,
                                cols=128)  # Change rows & cols values depending on your display dimensions.
 led.begin()
 led.clear_display()
@@ -45,8 +45,8 @@ led.normal_display()
 time.sleep(0.5)
 heading = "DATA TRANSFER"
 note = "PRESS ANY KEY"
-led.draw_text2(0, 0, heading, 1)
-led.draw_text2(12, 15, note, 1)
+led.draw_text2(40, 0, heading, 1)
+led.draw_text2(20, 32, note, 1)
 led.display()
 
 def menu_pos(pos,opr,lim):
@@ -63,7 +63,7 @@ def menu_pos(pos,opr,lim):
 
 def copydir(src, dst):
     dis = "SENDING.."
-    led.draw_text2(0, 0, dis, 1)
+    led.draw_text2(100, 12, dis, 1)
     led.display()
     if os.path.isfile(src) == True:
         shutil.copy(src, dst)
@@ -89,23 +89,25 @@ siz2 = siz1 -1
 nu = 0
 titl = "SELECT RECIVER"
 #led.draw_text2(0, 0, titl, 1)
+r_b=">"
+l_b="<"
 
 if siz1 == 0:
     led.clear_display()
     te = "NO PENDRIVE FOUND"
-    led.draw_text2(13, 15, te, 1)
+    led.draw_text2(20, 32, te, 1)
     led.display()
     time.sleep(2)
-    os.system('python main_menu.py')
+    os.system('python3 main_menu.py')
 
 if siz1 == 1:
     texn = "CONNECT THE"
     texm = "2nd PENDRIVE"
-    led.draw_text2(0, 10, texn, 1)
-    led.draw_text2(0, 19, texm, 1)
+    led.draw_text2(20, 26, texn, 1)
+    led.draw_text2(20, 36, texm, 1)
     led.display()
     time.sleep(2)
-    os.system('python main_menu.py')
+    os.system('python3 main_menu.py')
 
 while True:
     scrol = GPIO.input(27)
@@ -118,16 +120,20 @@ while True:
     if scrol == False:
         nu = menu_pos(nu,d,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
         led.display()
         time.sleep(0.2)
 
     elif d_scrol == False:
         nu = menu_pos(nu,u,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
         led.display()
         time.sleep(0.2)
 
@@ -137,7 +143,7 @@ while True:
         break
 
     elif back == False:
-        os.system('python main_menu.py')
+        os.system('python3 main_menu.py')
 
 led.clear_display()
 n_head="SOURCE LOCATION"
@@ -147,6 +153,8 @@ led.draw_text2(12, 15, n_head2, 1)
 led.display()
 un = 0
 title = "SELECT SENDER"
+r_b=">"
+l_b="<"
 #led.draw_text2(0, 0, title, 1)
 while True:
     scrol = GPIO.input(27)
@@ -159,16 +167,20 @@ while True:
     if scrol == False:
         un=menu_pos(un,d,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, title, 1)
-        led.draw_text2(0, 15, files[un], 1)
+        led.draw_text2(40, 0, title, 1)
+        led.draw_text2(44, 30, files[un], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
         led.display()
         time.sleep(0.2)
 
     if d_scrol == False:
         un=menu_pos(un,u,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, title, 1)
-        led.draw_text2(0, 15, files[un], 1)
+        led.draw_text2(40, 0, title, 1)
+        led.draw_text2(44, 30, files[un], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)        
         led.display()
         time.sleep(0.2)
 
@@ -178,7 +190,7 @@ while True:
         break
 
     elif back == False:
-        os.system('python main_menu.py')
+        os.system('python3 main_menu.py')
 
 led.clear_display()
 rinpt = src
@@ -199,18 +211,27 @@ while True:
     select = GPIO.input(6)
     d='d'
     u='u'
+    r_b=">"
+    l_b="<"
+    tl="DATA TRANSFER"
     if scrol == False:
         x=menu_pos(x,d,siz_spath2)
         led.clear_display()
-        led.draw_text2(0, 15, lst_spath[x], 1)
+        led.draw_text2(40, 0, tl,1)
+        led.draw_text2(44, 30, lst_spath[x], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)        
         led.display()
         time.sleep(0.2)
 
     if d_scrol == False:
         x=menu_pos(x,u,siz_spath2)
         led.clear_display()
-        led.draw_text2(0, 15, lst_spath[x], 1)
-        led.display()
+        led.draw_text2(40, 0, tl,1)
+        led.draw_text2(44, 30, lst_spath[x], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)        
+        led.display() 
         time.sleep(0.2)
 
     elif enter == False:
@@ -218,9 +239,9 @@ while True:
         ndes = "/media/pi/" + str((files[int(rinpt)]))
         dis1 = "SENT"
         copydir(nsrc, ndes)
-        led.draw_text2(0, 24, dis1, 1)
+        led.draw_text2(100, 50, dis1, 1)
         led.display()
         time.sleep(0.2)
 
     elif back == False:
-        os.system('python main_menu.py')
+        os.system('python3 main_menu.py')
