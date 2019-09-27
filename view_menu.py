@@ -46,8 +46,8 @@ led.normal_display()
 time.sleep(0.5)
 heading = "VIEW STORAGE"
 note = "PRESS ARROW KEY"
-led.draw_text2(0, 0, heading, 1)
-led.draw_text2(12, 15, note, 1)
+led.draw_text2(40, 0, heading, 1)
+led.draw_text2(20, 30, note, 1)
 led.display()
 
 def menu_pos(pos,opr,lim):
@@ -69,14 +69,13 @@ siz1 = len(files)
 siz2 = siz1 -1
 nu = 0
 titl = "SELECT DRIVE"
-
 if siz1 == 0:
     led.clear_display()
     te = "NO PENDRIVE FOUND"
-    led.draw_text2(13, 15, te, 1)
+    led.draw_text2(20, 32, te, 1)
     led.display()
     time.sleep(2)
-    os.system('python main_menu.py')
+    os.system('python3 main_menu.py')
 
 while True:
     scrol = GPIO.input(27)
@@ -86,19 +85,25 @@ while True:
     select = GPIO.input(6)
     d='d'
     u='u'
+    r_b=">"
+    l_b="<"
     if scrol == False:
         nu = menu_pos(nu,d,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
         led.display()
         time.sleep(0.2)
 
     elif d_scrol == False:
         nu = menu_pos(nu,u,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)        
         led.display()
         time.sleep(0.2)
 
@@ -107,8 +112,8 @@ while True:
         #go_src = '/media/pi'
         #def_src = str(files[nu])
         path_src = "/media/pi/" + str(files[nu])
-        os.system("python pathfinder.py " + str(name)+" " + str(path_src))
+        os.system("python3 pathfinder.py " + str(name)+" " + str(path_src))
 
     elif back == False:
-        os.system('python main_menu.py')
+        os.system('python3 main_menu.py')
 
