@@ -130,7 +130,7 @@ def copydir(src, dst):
                 h=h+1
 
 
-path = ('E:/')
+path = ('/home/pi')
 files=os.listdir(path)
 siz1=len(files)
 nu=0
@@ -144,7 +144,7 @@ rinpt = input('RECIVER:\n')
 sinpt = input('SENDER:\n')
 if rinpt== 'q' or sinpt=='q':
     quit()
-spath_name="E:/"+str((files[int(sinpt)]))
+spath_name="/home/pi/"+str((files[int(sinpt)]))
 spath=(spath_name)
 lst_spath=os.listdir(spath)
 siz_spath=len(lst_spath)
@@ -162,8 +162,8 @@ while True:
     if choice == 'q':
         quit()
     else:
-        nsrc = "E:/"+str((files[int(sinpt)]))+"/"+str((lst_spath[int(choice)]))
-        ndes = "E:/"+str((files[int(rinpt)]))
+        nsrc = "/home/pi/"+str((files[int(sinpt)]))+"/"+str((lst_spath[int(choice)]))
+        ndes = "/home/pi/"+str((files[int(rinpt)]))
         print(nsrc)
         print(ndes)
         copy_with_progress(nsrc,ndes)
