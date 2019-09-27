@@ -35,7 +35,7 @@ gpio = gaugette.gpio.GPIO()
 spi = gaugette.spi.SPI(spi_bus, spi_device)
 
 # Very important... This lets py-gaugette 'know' what pins to use in order to reset the display
-led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=32,
+led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=64,
                                cols=128)  # Change rows & cols values depending on your display dimensions.
 led.begin()
 led.clear_display()
