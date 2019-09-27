@@ -52,7 +52,7 @@ def copyfile(src, dst):
             copyfileobj(fsrc, fdst, callback=copy_progress, total=size)
     return dst
 
-def copyfileobj(fsrc, fdst, callback, total, length=16*1024):
+def copyfileobj(fsrc, fdst, callback,total, length=16*1024):
     copied = 0
     while True:
         buf = fsrc.read(length)
@@ -60,8 +60,7 @@ def copyfileobj(fsrc, fdst, callback, total, length=16*1024):
             break
         fdst.write(buf)
         copied += len(buf)
-        callback(copied, total=total)
-
+        callback(copied,total=total)
 
 def copy_with_progress(src, dst, *, follow_symlinks=True):
     if os.path.isdir(dst):
