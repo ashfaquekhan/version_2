@@ -121,14 +121,14 @@ while True:
     elif select == False:
         name = "showlist"
         path = str(path_src)+"/"+str(files[nu])
-        os.system("python pathfinder.py " + str(name) +" "+ str(path))
+        os.system("python3 pathfinder.py " + str(name) +" "+ str(path))
         break
 
     elif back == False:
         path = step_back(path_src)
         if path == "/media/pi":
-            os.system("python view_menu.py")
+            os.system("python3 view_menu.py")
         else:
             name= "showlist"
-            os.system("python pathfinder.py " + str(name) +" "+ str(path))
+            os.system("python3 pathfinder.py " + str(name) +" "+ str(path))
 
