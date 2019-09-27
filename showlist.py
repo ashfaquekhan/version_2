@@ -36,7 +36,7 @@ gpio = gaugette.gpio.GPIO()
 spi = gaugette.spi.SPI(spi_bus, spi_device)
 
 # Very important... This lets py-gaugette 'know' what pins to use in order to reset the display
-led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=32,
+led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=64,
                                cols=128)  # Change rows & cols values depending on your display dimensions.
 led.begin()
 led.clear_display()
@@ -47,8 +47,8 @@ led.normal_display()
 time.sleep(0.5)
 heading = "VIEW"
 note = "PRESS ARROW KEY"
-led.draw_text2(0, 0, heading, 1)
-led.draw_text2(12, 15, note, 1)
+led.draw_text2(40, 0, heading, 1)
+led.draw_text2(20, 30, note, 1)
 led.display()
 
 def step_back(b_path):
@@ -93,19 +93,28 @@ while True:
     select = GPIO.input(6)
     d='d'
     u='u'
+    r_b=">"
+    l_b="<"
+    l_l="_._"
     if scrol == False:
         nu=menu_pos(nu,d,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
+        led.draw_text2(44+(4*l), 48, l_l, 1)
         led.display()
         time.sleep(0.2)
 
     elif d_scrol == False:
         nu=menu_pos(nu,u,siz2)
         led.clear_display()
-        led.draw_text2(0, 0, titl, 1)
-        led.draw_text2(0, 15, files[nu], 1)
+        led.draw_text2(40, 0, titl, 1)
+        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(4, 26, l_b, 2)
+        led.draw_text2(118, 26, r_b, 2)
+        led.draw_text2(44+(4*l), 48, l_l, 1)
         led.display()
         time.sleep(0.2)
 
