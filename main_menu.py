@@ -89,7 +89,7 @@ def main_menu():
             led.draw_text2(44, 30, tex_o, 1)
             led.draw_text2(4, 26, l_b, 2)
             led.draw_text2(118, 26, r_b, 2)
-            led.draw_text2(41+l, 42, l_l, 2)
+            led.draw_text2(44+(4*l), 48, l_l, 1)
             led.display()
             time.sleep(0.2)
 
@@ -102,9 +102,10 @@ def main_menu():
             led.draw_text2(44, 30, tex_p, 1)
             led.draw_text2(4, 26, l_b, 2)
             led.draw_text2(118, 26, r_b, 2)
-            led.draw_text2(41+l, 42, l_l, 2)
+            led.draw_text2(44+(4*l), 48, l_l, 1)
             led.display()
             time.sleep(0.2)
+
 
 
 
