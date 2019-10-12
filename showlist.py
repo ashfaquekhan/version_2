@@ -99,22 +99,22 @@ while True:
     if scrol == False:
         nu=menu_pos(nu,d,siz2)
         led.clear_display()
-        led.draw_text2(40, 0, titl, 1)
-        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(44, 0, titl, 1)
+        led.draw_text2(40, 30, files[nu], 1)
         led.draw_text2(4, 26, l_b, 2)
         led.draw_text2(118, 26, r_b, 2)
-        led.draw_text2(44+(4*l), 48, l_l, 1)
+        led.draw_text2(44+(4*nu), 48, l_l, 1)
         led.display()
         time.sleep(0.2)
 
     elif d_scrol == False:
         nu=menu_pos(nu,u,siz2)
         led.clear_display()
-        led.draw_text2(40, 0, titl, 1)
-        led.draw_text2(44, 30, files[nu], 1)
+        led.draw_text2(44, 0, titl, 1)
+        led.draw_text2(40, 30, files[nu], 1)
         led.draw_text2(4, 26, l_b, 2)
         led.draw_text2(118, 26, r_b, 2)
-        led.draw_text2(44+(4*l), 48, l_l, 1)
+        led.draw_text2(44+(4*nu), 48, l_l, 1)
         led.display()
         time.sleep(0.2)
 
