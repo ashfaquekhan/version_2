@@ -45,7 +45,7 @@ led.invert_display()
 time.sleep(0.5)
 led.normal_display()
 time.sleep(0.5)
-heading = "VIEW"
+heading = "VIEW MENU"
 note = "PRESS ARROW KEY"
 led.draw_text2(40, 0, heading, 1)
 led.draw_text2(20, 30, note, 1)
