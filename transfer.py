@@ -234,6 +234,14 @@ while True:
         led.display() 
         time.sleep(0.2)
 
+    elif select == False:
+        name = 'showlist_transfer'
+        #go_src = '/media/pi'
+        #def_src = str(files[nu])
+        path_src = "/media/pi/" + str((files[int(sinpt)])) + "/" + str((lst_spath[int(x)]))
+        ndes = "/media/pi/" + str((files[int(rinpt)]))
+        os.system("python3 pathfinder_t.py " + str(name)+" " + str(path_src)+" "+ str(ndes))
+
     elif enter == False:
         nsrc = "/media/pi/" + str((files[int(sinpt)])) + "/" + str((lst_spath[int(x)]))
         ndes = "/media/pi/" + str((files[int(rinpt)]))
