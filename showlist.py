@@ -7,9 +7,8 @@ import sys
 import RPi.GPIO as  GPIO
 import shutil
 
-
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-31
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # NOT_DEFINED_BUTTON-PIN-31
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
@@ -24,7 +23,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-PIN-18
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DELETE_BUTTON-PIN-16
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-16
 
 
 RESET_PIN = 15  # WiringPi pin 15 is GPIO14.
@@ -90,7 +89,7 @@ while True:
     enter = GPIO.input(24)
     d_scrol = GPIO.input(5)
     back = GPIO.input(22)
-    select = GPIO.input(6)
+    select = GPIO.input(23)
     d='d'
     u='u'
     r_b=">"
