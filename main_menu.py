@@ -8,7 +8,7 @@ import RPi.GPIO as  GPIO
 import shutil
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-31
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # NOT_DEFINED_BUTTON-PIN-31
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
@@ -23,7 +23,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-PIN-18
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DELETE_BUTTON-PIN-16
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-16
 
 
 RESET_PIN = 15  # WiringPi pin 15 is GPIO14.
@@ -76,7 +76,7 @@ def main_menu():
         down = GPIO.input(5)
         enter = GPIO.input(24)
         back = GPIO.input(22)
-        select = GPIO.input(6)
+        select = GPIO.input(23)
         len_opt = len(opt)
         len_opt_t = len_opt - 1
 
@@ -105,8 +105,6 @@ def main_menu():
             led.draw_text2(44+(4*l), 48, l_l, 1)
             led.display()
             time.sleep(0.2)
-
-
 
 
         elif enter == False:
